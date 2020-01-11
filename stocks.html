@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Stock Selector</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="icon" type="image/x-icon" href="diyw-favicon.ico" />
+        <link rel="shortcut icon" type="image/x-icon" href="diyw-favicon.ico" />
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<a href="index.html" class="logo">
+                        <img src="images/logo-white.png" style="height:0.8em;"/>DIYWealth
+                    </a>
+					<nav id="nav">
+						<a href="index.html">Home</a>
+						<a href="stocks.html">Stocks</a>
+						<a href="performance.html">Performance</a>
+					</nav>
+					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+				</div>
+			</header>
+
+		<!-- Stock list -->
+			<section id="stocks" class="wrapper">
+				<div class="inner">
+
+					<header class="align-center">
+						<h2>Stock Selector</h2>
+					</header>
+                    <p>Here is a list of stocks selected by the DIYWealth algorithm. Select stocks with sufficient market capitalisation according to your risk appetite.</p>
+                    <p>Note: The data may note be completely up to date. We have to pay for the data and simply can't afford to pay for the financial data the moment it becomes available. We try to keep earnings and financials no more than a quarter out of date and prices to the day if possible. You should check the values presented here are reasonable using another data provider e.g. Google.</p>
+
+                    <div id="latestDates">
+                    </div>
+
+					<!-- Form -->
+					<h3>Minimum market capitalisation ($1M)</h3>
+                    <ul class="actions">
+                        <li><input type="number" name="mcap" id="mcap" value="0" min="0" placeholder="Minimum market capitalisation ($1M)" /></li>
+                        <li><input type="submit" onclick="get_json_data();" value="Get Stocks" /></li>
+                    </ul>
+                    <div class="table-wrapper" id="stockTable"></div>
+
+				</div>
+			</section>
+
+
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<div class="flex">
+						<div class="copyright">
+							&copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.
+						</div>
+						<ul class="icons">
+							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon fa-linkedin"><span class="label">linkedIn</span></a></li>
+							<li><a href="#" class="icon fa-pinterest-p"><span class="label">Pinterest</span></a></li>
+							<li><a href="#" class="icon fa-vimeo"><span class="label">Vimeo</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+            <script type="text/javascript">
+                window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='number'){e.preventDefault();return false;}}},true);
+            </script>
+            <!-- Load table data -->
+            <script>
+                //first add an event listener for page load
+                document.addEventListener( "DOMContentLoaded", get_json_data, false ); // get_json_data is the function name that will fire on page load
+
+                //this function is in the event listener and will execute on page load
+                function get_json_data(){
+                    // Relative URL of external json file
+                    var json_url = 'data/stock_list.json';
+
+                    //Build the XMLHttpRequest (aka AJAX Request)
+                    xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {//when a good response is given do this
+
+                            var data = JSON.parse(this.responseText); // convert the response to a json object
+                            append_json(data);// pass the json object to the append_json function
+                        }
+                    }
+                    //set the request destination and type
+                    xmlhttp.open("POST", json_url, true);
+                    //set required headers for the request
+                    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    // send the request
+                    xmlhttp.send(); // when the request completes it will execute the code in onreadystatechange section
+                }
+
+                //this function appends the json data to the table 'gable'
+                function append_json(data){
+                    var table = document.createElement('table');
+                    var thead = document.createElement('thead');
+                    var tr = document.createElement('tr');
+                    tr.innerHTML = '<th>' + "Symbol" + '</th>' +
+                        '<th>' + "Name" + '</th>' +
+                        '<th>' + "PE Ratio" + '</th>' +
+                        '<th>' + "Return On Equity" + '</th>' +
+                        '<th>' + "MCap ($1M)" + '</th>';
+                    thead.appendChild(tr);
+                    table.appendChild(thead);
+                    var tbody = document.createElement('tbody');
+                    var mcap = document.getElementById('mcap');
+                    var row = 0;
+                    data.forEach(function(object) {
+                        if (object.marketCap/1000000 > mcap.value) {
+                            if (row < 100) {
+                                var tr = document.createElement('tr');
+                                tr.innerHTML = '<td>' + object.symbol + '</td>' +
+                                '<td>' + object.companyName + '</td>' +
+                                '<td>' + object.peRatio.toFixed(1) + '</td>' +
+                                '<td>' + object.returnOnEquity.toFixed(1) + '</td>' +
+                                '<td>' + (object.marketCap/1000000).toFixed(1) + '</td>';
+                                tbody.appendChild(tr);
+                            }
+                            row = row + 1;
+                        }
+                    });
+                    table.appendChild(tbody);
+                    document.getElementById('stockTable').innerHTML = "";
+                    document.getElementById('stockTable').appendChild(table);
+                }
+            </script>
+            <!-- Latest Dates -->
+            <script>
+                //first add an event listener for page load
+                document.addEventListener( "DOMContentLoaded", get_latest_dates, false ); // get_json_data is the function name that will fire on page load
+
+                //this function is in the event listener and will execute on page load
+                function get_latest_dates(){
+                    // Relative URL of external json file
+                    var json_url = 'data/latest_dates.json';
+
+                    //Build the XMLHttpRequest (aka AJAX Request)
+                    xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {//when a good response is given do this
+
+                            var data = JSON.parse(this.responseText); // convert the response to a json object
+                            append_dates(data);// pass the json object to the append_json function
+
+                        }
+                    }
+                    //set the request destination and type
+                    xmlhttp.open("POST", json_url, true);
+                    //set required headers for the request
+                    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    // send the request
+                    xmlhttp.send(); // when the request completes it will execute the code in onreadystatechange section
+                }
+
+                //this function appends the json data to the table 'gable'
+                function append_dates(data){
+
+                    var line1 = "<h3>Date of most recent financial reporting:</h3>"
+                    var line2a = "<p><strong>"
+                    var line2b = "</p></strong>"
+                    var line3 = "<h3>Date of most recent stock quote:</h3>"
+                    var line4a = "<p><strong>"
+                    var line4b = "</p></strong>"
+
+                    var latestReportDate = "";
+                    var latestDate = "";
+                    var row = 0;
+                    data.forEach(function(object) {
+                        if (row == 0) {
+                            latestReportDate = object.latestReportDate;
+                            latestDate = object.latestDate;
+                        }
+                        row = row + 1;
+                    });
+                    document.getElementById('latestDates').innerHTML = line1 + line2a + latestReportDate + line2b + line3 + line4a + latestDate + line4b;
+                }
+            </script>
+
+	</body>
+</html>
