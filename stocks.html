@@ -33,7 +33,7 @@
 						<h2>Stock Selector</h2>
 					</header>
                     <p>Here is a list of stocks selected by the DIYWealth algorithm. Select stocks with sufficient market capitalisation according to your risk appetite.</p>
-                    <p>Note: The data may note be completely up to date. We have to pay for the data and simply can't afford to pay for the financial data the moment it becomes available. We try to keep earnings and financials no more than a quarter out of date and prices to the day if possible. You should check the values presented here are reasonable using another data provider e.g. Google.</p>
+                    <p>Note: The data may note be completely up to date. We try to obtain company balance sheets, used for calculating the return on equity, no later than a month after the most recent quarterly reporting. The PE ratio and market capitalisation should be no more than a week out of date. The dates of the latest data are given below. You should check that the data recent, and that the values presented here are reasonable using another data provider e.g. Google.</p>
 
                     <div id="latestDates">
                     </div>
@@ -114,6 +114,7 @@
                         '<th>' + "Name" + '</th>' +
                         '<th>' + "PE Ratio" + '</th>' +
                         '<th>' + "Return On Equity" + '</th>' +
+                        '<th>' + "Report Date" + '</th>' +
                         '<th>' + "MCap ($1M)" + '</th>';
                     thead.appendChild(tr);
                     table.appendChild(thead);
@@ -128,6 +129,7 @@
                                 '<td>' + object.companyName + '</td>' +
                                 '<td>' + object.peRatio.toFixed(1) + '</td>' +
                                 '<td>' + object.returnOnEquity.toFixed(1) + '</td>' +
+                                '<td>' + object.reportDate + '</td>' +
                                 '<td>' + (object.marketCap/1000000).toFixed(1) + '</td>';
                                 tbody.appendChild(tr);
                             }
@@ -147,7 +149,7 @@
                 //this function is in the event listener and will execute on page load
                 function get_latest_dates(){
                     // Relative URL of external json file
-                    var json_url = 'data/latest_dates.json';
+                    var json_url = 'data/stock_list.json';
 
                     //Build the XMLHttpRequest (aka AJAX Request)
                     xmlhttp = new XMLHttpRequest();
@@ -170,24 +172,13 @@
                 //this function appends the json data to the table 'gable'
                 function append_dates(data){
 
-                    var line1 = "<h3>Date of most recent financial reporting:</h3>"
+                    var line1 = "<h3>Date of most recent stock quote:</h3>"
                     var line2a = "<p><strong>"
                     var line2b = "</p></strong>"
-                    var line3 = "<h3>Date of most recent stock quote:</h3>"
-                    var line4a = "<p><strong>"
-                    var line4b = "</p></strong>"
 
-                    var latestReportDate = "";
                     var latestDate = "";
-                    var row = 0;
-                    data.forEach(function(object) {
-                        if (row == 0) {
-                            latestReportDate = object.latestReportDate;
-                            latestDate = object.latestDate;
-                        }
-                        row = row + 1;
-                    });
-                    document.getElementById('latestDates').innerHTML = line1 + line2a + latestReportDate + line2b + line3 + line4a + latestDate + line4b;
+                    latestDate = data[0].date
+                    document.getElementById('latestDates').innerHTML = line1 + line2a + latestDate + line2b;
                 }
             </script>
 
