@@ -34,7 +34,8 @@
 						<h2>Stock Selector</h2>
 					</header>
                     <p>Here is a list of stocks selected by the DIYWealth algorithm. Select stocks with sufficient market capitalisation according to your risk appetite.</p>
-                    <p>Note: The data may note be completely up to date. We try to obtain company balance sheets, used for calculating the return on equity, no later than a month after the most recent quarterly reporting. The PE ratio and market capitalisation should be no more than a week out of date. The dates of the latest data are given below. You should check that the data recent, and that the values presented here are reasonable using another data provider e.g. Google.</p>
+                    <p>Disclaimer: DIYWealth (doityourwealth.com) is not an investment adviser, brokerage firm, or investment company. The strategy demonstrated here and the stocks it selects have no guarantee of investment success. If you buy any of the stocks listed it is at your own risk.</p>
+                    <p>Note: The data may note be completely up to date. We try to obtain company balance sheets, used for calculating the return on equity, no later than a month after the most recent quarterly reporting. The PE ratio and market capitalisation should be no more than a week out of date. The dates of the latest data are given below. You should check that the data is recent, and that the values presented here are reasonable using another data provider e.g. Google.</p>
 
                     <div id="latestDates">
                     </div>
@@ -57,7 +58,7 @@
 				<div class="inner">
 					<div class="flex">
 						<div class="copyright">
-							&copy; DIYWealth, 2020. Design featured is a modified template available from: <a href="https://templated.co" target="_blank">templated.co</a>.
+						    &copy; DIYWealth, 2020. <a href="credits.html">Credits</a>.
 						</div>
 						<ul class="icons">
 							<li><a href="https://github.com/DIYWealth" target="_blank" class="icon fa-github"><span class="label">Github</span></a></li>
@@ -110,10 +111,10 @@
                     var tr = document.createElement('tr');
                     tr.innerHTML = '<th>' + "Symbol" + '</th>' +
                         '<th>' + "Name" + '</th>' +
+                        '<th>' + "MCap ($1M)" + '</th>' +
                         '<th>' + "PE Ratio" + '</th>' +
                         '<th>' + "Return On Equity" + '</th>' +
-                        '<th>' + "Report Date" + '</th>' +
-                        '<th>' + "MCap ($1M)" + '</th>';
+                        '<th>' + "Report Date" + '</th>';
                     thead.appendChild(tr);
                     table.appendChild(thead);
                     var tbody = document.createElement('tbody');
@@ -125,10 +126,10 @@
                                 var tr = document.createElement('tr');
                                 tr.innerHTML = '<td>' + object.symbol + '</td>' +
                                 '<td>' + object.companyName + '</td>' +
+                                '<td>' + (object.marketCap/1000000).toFixed(1) + '</td>' +
                                 '<td>' + object.peRatio.toFixed(1) + '</td>' +
                                 '<td>' + object.returnOnEquity.toFixed(1) + '</td>' +
-                                '<td>' + object.reportDate + '</td>' +
-                                '<td>' + (object.marketCap/1000000).toFixed(1) + '</td>';
+                                '<td>' + object.reportDate + '</td>';
                                 tbody.appendChild(tr);
                             }
                             row = row + 1;
@@ -170,7 +171,7 @@
                 //this function appends the json data to the table 'gable'
                 function append_dates(data){
 
-                    var line1 = "<h3>Date of most recent stock quote:</h3>"
+                    var line1 = "<h3>Date of latest PE and MCap data:</h3>"
                     var line2a = "<p><strong>"
                     var line2b = "</p></strong>"
 
