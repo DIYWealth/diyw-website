@@ -1595,7 +1595,7 @@
 		@media screen and (max-width: 1680px) {
 
 			body, input, select, textarea {
-				font-size: 11pt;
+				font-size: 12pt;
 			}
 
 		}
@@ -1603,7 +1603,7 @@
 		@media screen and (max-width: 1280px) {
 
 			body, input, select, textarea {
-				font-size: 11pt;
+				font-size: 12pt;
 			}
 
 		}
@@ -1628,6 +1628,46 @@
 
 			body, input, select, textarea {
 				font-size: 12pt;
+			}
+
+		}
+
+		@media screen and (max-width: 1680px) {
+
+			.chart-container {
+                height: 700px;
+			}
+
+		}
+
+		@media screen and (max-width: 1280px) {
+
+			.chart-container {
+                height: 650px;
+			}
+
+		}
+
+		@media screen and (max-width: 980px) {
+
+			.chart-container {
+                height: 600px;
+			}
+
+		}
+
+		@media screen and (max-width: 736px) {
+
+			.chart-container {
+                height: 550px;
+			}
+
+		}
+
+		@media screen and (max-width: 480px) {
+
+			.chart-container {
+                height: 500px;
 			}
 
 		}
@@ -2971,7 +3011,7 @@
 /* Banner */
 
 	#banner {
-		padding: 12em 0 10em 0;
+		padding: 10em 0 4em 0;
 		background-image: url('../../images/banner.jpg');
 		background-size: cover;
 		background-position: top;
@@ -2982,8 +3022,8 @@
 	}
 
 		#banner h1 {
-			font-size: 3.5em;
-			font-weight: 100;
+			font-size: 4.5em;
+			font-weight: 500;
 			color: #fff;
 			line-height: 1em;
 			margin: 0 0 0.5em 0;
@@ -2991,8 +3031,9 @@
 		}
 
 		#banner p {
-			font-size: 1em;
-			color: rgba(255, 255, 255, 0.55);
+			font-size: 1.5em;
+            font-weight: 800;
+			color: rgba(255, 255, 255, 0.75);
 			margin-bottom: 1.75em;
 		}
 
@@ -3007,7 +3048,7 @@
 		@media screen and (max-width: 1280px) {
 
 			#banner {
-				padding: 10em 2em 8em 2em;
+				padding: 8em 2em 4em 2em;
 			}
 
 		}
@@ -3023,7 +3064,7 @@
 		@media screen and (max-width: 736px) {
 
 			#banner {
-				padding: 8em 1.5em 6em 1.5em;
+				padding: 6em 1.5em 3em 1.5em;
 			}
 
 				#banner h1 {
@@ -3039,7 +3080,7 @@
 		@media screen and (max-width: 480px) {
 
 			#banner {
-				padding: 6em 1.5em 4em 1.5em;
+				padding: 5em 1.5em 3em 1.5em;
 			}
 
 		}
@@ -3053,7 +3094,7 @@
 
 	#footer .copyright {
 		color: #bbb;
-		font-size: 0.8em;
+		font-size: 1.0em;
 		margin: 0 0 2em 0;
 		padding: 0;
 	}
@@ -3069,7 +3110,7 @@
 			}
 
 	#footer ul.icons li .icon {
-		font-size: 0.58em;
+		font-size: 0.9em;
 	}
 
 	@media screen and (max-width: 736px) {
