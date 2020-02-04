@@ -10,321 +10,322 @@
 	</head>
 	<body class="subpage">
 
-		<!-- Header -->
-			<header id="header">
-				<div class="inner">
-					<a href="index.html" class="logo">
-                        <img src="images/logo-white.png" style="height:0.8em;"/>DIYWealth
-                    </a>
-					<nav id="nav">
-						<a href="index.html">Home</a>
-						<a href="people.html">People</a>
-						<a href="stocks.html">Stocks</a>
-						<a href="performance.html">Performance</a>
-					</nav>
-					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-				</div>
+	<!-- Header -->
+	<header id="header">
+		<div class="inner">
+			<a href="index.html" class="logo">
+                <img src="images/logo-white.png" style="height:0.8em;"/>DIYWealth
+            </a>
+			<nav id="nav">
+				<a href="index.html">Home</a>
+				<a href="people.html">People</a>
+				<a href="stocks.html">Stocks</a>
+				<a href="performance.html">Performance</a>
+			</nav>
+			<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+		</div>
+	</header>
+
+	<!-- Main -->
+	<section id="main" class="wrapper">
+		<div class="inner">
+			<header class="align-center">
+				<h2>Performance</h2>
 			</header>
 
-		<!-- Main -->
-			<section id="main" class="wrapper">
-				<div class="inner">
-					<header class="align-center">
-						<h2>Performance</h2>
-					</header>
+		<!-- Content -->
+		    
+			<h2 id="content">Portfolio Selection</h2>
+			<p>The test of an investment strategy is its performance. On this page you can plot the performance of different virtual portfolios that are following the DIYWealth strategy. You can see how the portfolio performances compare based on the choice of (1) different numbers stocks included in the portfolio and (2) the minimum market capitalisation.</p>
+		    <hr class="major" />
 
-				<!-- Content -->
-				    
-					<h2 id="content">Portfolio Selection</h2>
-					<p>The test of a portfolio strategy is in its performance. The performance can vary based on a number of factors. On this page, we provide tools to uncover two important considerations for a portfolio (1) the portfolio size and (2) the market capitalisation (MCAP) of each company included in the portfolio.</p>
-				<hr class="major" />
-
-				<!-- Elements -->
-				        	
-						<h3>Portfolio Size</h3>
-						    <p>Select from the dropdown menu below the number of stocks in the portfolio.</p>
-							<div class="4u 12u$(medium)">
-							<div class="select-number-of-stocks">
-								<select name="category-stocks" id="category-stocks-id">
-									<option value="">- Number of stocks -</option>
-									<option value="1">30</option>
-									<option value="2">50</option>
-								</select>
-							</div>
-							</div>
-						
-						<p style="margin-bottom:1cm;"></p>
-						
-						<h3>Minimum market capitalisation (MCAP)</h3>
-						    <p>For each stock in the portfolio, select from the dropdown menu below the minimum MCAP ($USD) of each company.</p>
-							<div class="4u 12u$(medium)">
-							<div class="select-mcap">
-								<select name="category-mcap" id="category-mcap-id">
-									<option value="">- Minimum MCAP -</option>
-									<option value="1">$100 Million</option>
-									<option value="2">$500 Million</option>
-									<option value="3">$1 Billion</option>
-								    <option value="4">$5 Billion</option>
-								    <option value="5">$10 Billion</option>
-								    <option value="6">$50 Billion</option>
-								</select>
-							</div>
-							</div>
-						
-						<p style="margin-bottom:1cm;"></p>
-						<button id="myBtn">Chart Performance - click here</button>
-
-                        <p id="demo-A"></p>
-                        <p id="demo-B"></p>
-                        <canvas id="demo-chart"></canvas>
-                        <p id="demo-C"></p>
-
-
-			</section>
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<div class="flex">
-						<div class="copyright">
-							&copy; DIYWealth, 2020. Design featured is a modified template available from: <a href="https://templated.co" target="_blank">templated.co</a>.
-						</div>
-						<ul class="icons">
-							<li><a href="https://github.com/DIYWealth" target="_blank" class="icon fa-github"><span class="label">Github</span></a></li>
-							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-						</ul>
-					</div>
+		<!-- Elements -->
+		        	
+			<h3>Number of Stocks</h3>
+			    <p>Select from the dropdown menu below the number of stocks included in the portfolio.</p>
+				<div class="4u 12u$(medium)">
+					<select name="category-stocks" id="category-stocks-id">
+						<option value="">- Number of stocks -</option>
+						<option value="1">30</option>
+						<option value="2">50</option>
+					</select>
 				</div>
-			</footer>
+			
+			<p style="margin-bottom:1cm;"></p>
+			
+			<h3>Minimum market capitalisation (MCap)</h3>
+			    <p>Select from the dropdown menu below the minimum MCap ($USD) of each company.</p>
+				<div class="4u 12u$(medium)">
+					<select name="category-mcap" id="category-mcap-id">
+						<option value="">- Minimum MCAP -</option>
+						<option value="1">$100 Million</option>
+						<option value="2">$500 Million</option>
+						<option value="3">$1 Billion</option>
+					    <option value="4">$5 Billion</option>
+					    <option value="5">$10 Billion</option>
+					    <option value="6">$50 Billion</option>
+					</select>
+				</div>
+			
+			<p style="margin-bottom:1cm;"></p>
+			<input type="button" id="myBtn" value="Get Performance" />
 
-		<!-- Scripts -->
-		    <script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-            <script type="text/javascript">
-                window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='number'){e.preventDefault();return false;}}},true);
-            </script>
-            <script>
-                //first add an event listener for page load
-                document.getElementById("myBtn").addEventListener("click", plot_chart);
-                
-                
-                // get_json_data is the function name that will fire on page load
-                //this function is in the event listener and will execute on page load
-                function plot_chart(){
-                    // Relative URL of external json file
-                    var json_url = 'data/spy_performance.json';
+            <p id="demo-A"></p>
+            <p id="demo-B"></p>
+            <div class="chart-container">
+                <canvas id="demo-chart"></canvas>
+            </div>
+            <p id="demo-C"></p>
 
-                    //Build the XMLHttpRequest (aka AJAX Request)
-                    xmlhttp = new XMLHttpRequest();
-                    xmlhttp.onreadystatechange = function() {
-                        if (this.readyState == 4 && this.status == 200) {//when a good response is given do this
+		</div>
+	</section>
 
-                            var data = JSON.parse(this.responseText); // convert the response to a json object
-                            append_chart(data);// pass the json object to the append_json function
-                        }
+    <!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<div class="flex">
+					<div class="copyright">
+						&copy; DIYWealth, 2020. <a href="credits.html">Credits</a>.
+					</div>
+					<ul class="icons">
+						<li><a href="https://github.com/DIYWealth" target="_blank" class="icon fa-github"><span class="label">Github</span></a></li>
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+
+	<!-- Scripts -->
+	    <script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/skel.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script type="text/javascript">
+            window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='number'){e.preventDefault();return false;}}},true);
+        </script>
+        <script>
+            //first add an event listener for page load
+            document.getElementById("myBtn").addEventListener("click", plot_chart);
+            
+            
+            // get_json_data is the function name that will fire on page load
+            //this function is in the event listener and will execute on page load
+            function plot_chart(){
+                // Relative URL of external json file
+                var json_url = 'data/spy_performance.json';
+
+                //Build the XMLHttpRequest (aka AJAX Request)
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {//when a good response is given do this
+
+                        var data = JSON.parse(this.responseText); // convert the response to a json object
+                        append_chart(data);// pass the json object to the append_json function
                     }
-                    //set the request destination and type
-                    xmlhttp.open("POST", json_url, true);
-                    //set required headers for the request
-                    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                    // send the request
-                    xmlhttp.send(); // when the request completes it will execute the code in onreadystatechange section
-                    
-                    //var eA = document.getElementById("category-mcap-id");
-                    //var strUserA = eA.options[eA.selectedIndex].value;
-                    //var eB = document.getElementById("category-stocks-id");
-                    //var strUserB = eB.options[eB.selectedIndex].value;
-                    
-                    //document.getElementById("demo-A").innerHTML = strUserA;
-                    //document.getElementById("demo-B").innerHTML = strUserB;
+                }
+                //set the request destination and type
+                xmlhttp.open("POST", json_url, true);
+                //set required headers for the request
+                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                // send the request
+                xmlhttp.send(); // when the request completes it will execute the code in onreadystatechange section
+                
+                //var eA = document.getElementById("category-mcap-id");
+                //var strUserA = eA.options[eA.selectedIndex].value;
+                //var eB = document.getElementById("category-stocks-id");
+                //var strUserB = eB.options[eB.selectedIndex].value;
+                
+                //document.getElementById("demo-A").innerHTML = strUserA;
+                //document.getElementById("demo-B").innerHTML = strUserB;
+            }
+            
+            function get_other_data(arr_lab, arrA, callback){
+                var eA = document.getElementById("category-mcap-id");
+                var mcapVar = parseInt(eA.options[eA.selectedIndex].value);
+                var eB = document.getElementById("category-stocks-id");
+                var stockVar = parseInt(eB.options[eB.selectedIndex].value);
+                
+                //document.getElementById("demo-A").innerHTML = mcapVar;
+                //document.getElementById("demo-B").innerHTML = stockVar;
+                
+                //console.log(typeof mcapVar);
+                //console.log(typeof stockVar);
+                
+                var json_url_1 = '';
+                if ( mcapVar == 1 && stockVar == 1 ){
+                    json_url_1 = 'data/stocks30mcap100M_performance.json';
+                }
+                else if ( mcapVar == 2 && stockVar == 1 ){
+                    json_url_1 = 'data/stocks30mcap500M_performance.json';
+                }
+                else if ( mcapVar == 3 && stockVar == 1 ){
+                    json_url_1 = 'data/stocks30mcap1B_performance.json';
+                }
+                else if ( mcapVar == 4 && stockVar == 1 ){
+                    json_url_1 = 'data/stocks30mcap5B_performance.json';
+                }
+                else if ( mcapVar == 5 && stockVar == 1 ){
+                    json_url_1 = 'data/stocks30mcap10B_performance.json';
+                }
+                else if ( mcapVar == 6 && stockVar == 1 ){
+                    json_url_1 = 'data/stocks30mcap50B_performance.json';
+                }
+                else if ( mcapVar == 1 && stockVar == 2 ){
+                    json_url_1 = 'data/stocks50mcap100M_performance.json';
+                }
+                else if ( mcapVar == 2 && stockVar == 2 ){
+                    json_url_1 = 'data/stocks50mcap500M_performance.json';
+                }
+                else if ( mcapVar == 3 && stockVar == 2 ){
+                    json_url_1 = 'data/stocks50mcap1B_performance.json';
+                }
+                else if ( mcapVar == 4 && stockVar == 2 ){
+                    json_url_1 = 'data/stocks50mcap5B_performance.json';
+                }
+                else if ( mcapVar == 5 && stockVar == 2 ){
+                    json_url_1 = 'data/stocks50mcap10B_performance.json';
+                }
+                else if ( mcapVar == 6 && stockVar == 2 ){
+                    json_url_1 = 'data/stocks50mcap50B_performance.json';
+                } else{
+                    document.getElementById("demo-C").innerHTML = "Error, unknown combination of MCAP and number of stocks. Please ensure you select both a minimum market cap per stock and portfolio size.";
                 }
                 
-                function get_other_data(arr_lab, arrA, callback){
-                    var eA = document.getElementById("category-mcap-id");
-                    var mcapVar = parseInt(eA.options[eA.selectedIndex].value);
-                    var eB = document.getElementById("category-stocks-id");
-                    var stockVar = parseInt(eB.options[eB.selectedIndex].value);
-                    
-                    //document.getElementById("demo-A").innerHTML = mcapVar;
-                    //document.getElementById("demo-B").innerHTML = stockVar;
-                    
-                    //console.log(typeof mcapVar);
-                    //console.log(typeof stockVar);
-                    
-                    var json_url_1 = '';
-                    if ( mcapVar == 1 && stockVar == 1 ){
-                        json_url_1 = 'data/stocks30mcap100M_performance.json';
-                    }
-                    else if ( mcapVar == 2 && stockVar == 1 ){
-                        json_url_1 = 'data/stocks30mcap500M_performance.json';
-                    }
-                    else if ( mcapVar == 3 && stockVar == 1 ){
-                        json_url_1 = 'data/stocks30mcap1B_performance.json';
-                    }
-                    else if ( mcapVar == 4 && stockVar == 1 ){
-                        json_url_1 = 'data/stocks30mcap5B_performance.json';
-                    }
-                    else if ( mcapVar == 5 && stockVar == 1 ){
-                        json_url_1 = 'data/stocks30mcap10B_performance.json';
-                    }
-                    else if ( mcapVar == 6 && stockVar == 1 ){
-                        json_url_1 = 'data/stocks30mcap50B_performance.json';
-                    }
-                    else if ( mcapVar == 1 && stockVar == 2 ){
-                        json_url_1 = 'data/stocks50mcap100M_performance.json';
-                    }
-                    else if ( mcapVar == 2 && stockVar == 2 ){
-                        json_url_1 = 'data/stocks50mcap500M_performance.json';
-                    }
-                    else if ( mcapVar == 3 && stockVar == 2 ){
-                        json_url_1 = 'data/stocks50mcap1B_performance.json';
-                    }
-                    else if ( mcapVar == 4 && stockVar == 2 ){
-                        json_url_1 = 'data/stocks50mcap5B_performance.json';
-                    }
-                    else if ( mcapVar == 5 && stockVar == 2 ){
-                        json_url_1 = 'data/stocks50mcap10B_performance.json';
-                    }
-                    else if ( mcapVar == 6 && stockVar == 2 ){
-                        json_url_1 = 'data/stocks50mcap50B_performance.json';
-                    } else{
-                        document.getElementById("demo-C").innerHTML = "Error, unknown combination of MCAP and number of stocks. Please ensure you select both a minimum market cap per stock and portfolio size.";
-                    }
-                    
-                    //document.getElementById("demo-C").innerHTML = String(json_url_1);
-                    
+                //document.getElementById("demo-C").innerHTML = String(json_url_1);
+                
 
-                    //Build the XMLHttpRequest (aka AJAX Request)
-                    xmlhttp = new XMLHttpRequest();
-                    xmlhttp.onreadystatechange = function() {
-                        if (this.readyState == 4 && this.status == 200) {//when a good response is given do this
+                //Build the XMLHttpRequest (aka AJAX Request)
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {//when a good response is given do this
 
-                            var data = JSON.parse(this.responseText); // convert the response to a json object
-                            var cur_arr = [];
-                            data.forEach(function(object) {
-                                cur_arr.push(object.return);
-                            });
-                            console.log(Array.isArray(cur_arr));
-                            console.log(cur_arr);
-                            callback(arr_lab, arrA, cur_arr);
-                        }
-                    }
-                    
-                    //set the request destination and type
-                    xmlhttp.open("POST", json_url_1, true);
-                    //set required headers for the request
-                    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                    // send the request
-                    xmlhttp.send(); // when the request completes it will execute the code in onreadystatechange section
-
-                }
-
-                //this function appends the json data to the table 'gable'
-                function append_chart(data){
-                    //var table = document.createElement('table');
-                    //var thead = document.createElement('thead');
-                    //var tr = document.createElement('tr');
-                    //tr.innerHTML = '<th>' + "Symbol" + '</th>' +
-                    //    '<th>' + "Name" + '</th>' +
-                    //    '<th>' + "PE Ratio" + '</th>' +
-                    //    '<th>' + "Return On Equity" + '</th>' +
-                    //    '<th>' + "MCap ($1M)" + '</th>';
-                    //thead.appendChild(tr);
-                    //table.appendChild(thead);
-                    //var tbody = document.createElement('tbody');
-                    //var mcap = document.getElementById('mcap');
-                    //var row = 0;
-                    
-                    var arr = [];
-                    var arr_str = [];
-                    //var yearStart = 2000;
-                    //var yearEnd = 2040;
-                    
-                    //while(yearStart < yearEnd+1){
-                    //    arr.push(yearStart);
-                    //    arr_str.push(String(yearStart++));
-                    //}
-                    data.forEach(function(object) {
-                        arr.push(object.return);
-                        arr_str.push(String(object.date));
-                    });
-                    
-                    get_other_data( arr_str, arr, function (arr_l, arr1, arr2) {
-                        //document.getElementById("demo-B").innerHTML = String(arrA.length);
-                        //arrC = [];
-                        //arrC.push(arr2[0]);
-                        //arrC.push(arr2[1]);
-                        //return arrC;
-                        //document.getElementById("demo-A").innerHTML = String(arr1.length);
-                        //document.getElementById("demo-B").innerHTML = String(arr2.length);
-                        var ctx = document.getElementById('demo-chart').getContext('2d');
-                        var chart = new Chart(ctx, {
-                            // The type of chart we want to create
-                            type: 'line',
-                        
-                            // The data for our dataset
-                            data: {
-                                labels: arr_l,
-                                datasets: [{
-                                    label: 'Market',
-                                    backgroundColor: 'rgba(255, 99, 132, 0.1)',
-                                    borderColor: 'rgb(255, 99, 132)',
-                                    data: arr1,
-                                    order: 1
-                                },
-                                {
-                                    label: 'Selected portfolio',
-                                    backgroundColor: 'rgba(0, 99, 132, 0.1)',
-                                    borderColor: 'rgb(0, 99, 132)',
-                                    data: arr2,
-                                    order: 2
-                                }]
-                            },
-                            
-                            // Configuration options go here
-                            options:  {  
-                                scales: {
-                                    xAxes: [{
-                                        afterTickToLabelConversion: function(data){
-                                            
-                                            
-                                            var xLabels = data.ticks;
-                                                
-                                            xLabels.forEach(function (labels, i) {
-                                                if (i % 6 != 0){
-                                                    xLabels[i] = '';
-                                                }
-                                            });
-                                        },
-                                        scaleLabel: {
-                                            display: true,
-                                            labelString: 'Date (YYYY/MM/DD)'
-                                        }
-                                        
-                                    }],
-                                    yAxes: [{
-                                        scaleLabel: {
-                                            display: true,
-                                            labelString: 'Performance since '+String(arr_l[0])+' (%)'
-                                        }
-                                    }]
-                                }
-                            }
+                        var data = JSON.parse(this.responseText); // convert the response to a json object
+                        var cur_arr = [];
+                        data.forEach(function(object) {
+                            cur_arr.push(object.return);
                         });
-                    });
-                    //document.getElementById("demo-B").innerHTML = String(arrB.length);
-                    
-                    //document.getElementById("demo-B").innerHTML = String(arr_A.length);
-                    
-                    //document.getElementById("demo-B").innerHTML = String(arr_A.length);
-                    // See: https://stackoverflow.com/questions/31131275/create-a-multi-line-chart-using-chart-js
-                    
-                    
+                        console.log(Array.isArray(cur_arr));
+                        console.log(cur_arr);
+                        callback(arr_lab, arrA, cur_arr);
+                    }
                 }
                 
-            </script>
+                //set the request destination and type
+                xmlhttp.open("POST", json_url_1, true);
+                //set required headers for the request
+                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                // send the request
+                xmlhttp.send(); // when the request completes it will execute the code in onreadystatechange section
+
+            }
+
+            //this function appends the json data to the table 'gable'
+            function append_chart(data){
+                //var table = document.createElement('table');
+                //var thead = document.createElement('thead');
+                //var tr = document.createElement('tr');
+                //tr.innerHTML = '<th>' + "Symbol" + '</th>' +
+                //    '<th>' + "Name" + '</th>' +
+                //    '<th>' + "PE Ratio" + '</th>' +
+                //    '<th>' + "Return On Equity" + '</th>' +
+                //    '<th>' + "MCap ($1M)" + '</th>';
+                //thead.appendChild(tr);
+                //table.appendChild(thead);
+                //var tbody = document.createElement('tbody');
+                //var mcap = document.getElementById('mcap');
+                //var row = 0;
+                
+                var arr = [];
+                var arr_str = [];
+                //var yearStart = 2000;
+                //var yearEnd = 2040;
+                
+                //while(yearStart < yearEnd+1){
+                //    arr.push(yearStart);
+                //    arr_str.push(String(yearStart++));
+                //}
+                data.forEach(function(object) {
+                    arr.push(object.return);
+                    arr_str.push(String(object.date));
+                });
+                
+                get_other_data( arr_str, arr, function (arr_l, arr1, arr2) {
+                    //document.getElementById("demo-B").innerHTML = String(arrA.length);
+                    //arrC = [];
+                    //arrC.push(arr2[0]);
+                    //arrC.push(arr2[1]);
+                    //return arrC;
+                    //document.getElementById("demo-A").innerHTML = String(arr1.length);
+                    //document.getElementById("demo-B").innerHTML = String(arr2.length);
+                    var ctx = document.getElementById('demo-chart').getContext('2d');
+                    var chart = new Chart(ctx, {
+                        // The type of chart we want to create
+                        type: 'line',
+                    
+                        // The data for our dataset
+                        data: {
+                            labels: arr_l,
+                            datasets: [{
+                                label: 'S&P 500',
+                                backgroundColor: 'rgba(230, 138, 0, 0.1)',
+                                borderColor: 'rgb(230, 138, 0)',
+                                data: arr1,
+                                order: 1
+                            },
+                            {
+                                label: 'Selected portfolio',
+                                backgroundColor: 'rgba(51, 0, 51, 0.1)',
+                                borderColor: 'rgb(51, 0, 51)',
+                                data: arr2,
+                                order: 2
+                            }]
+                        },
+                        
+                        // Configuration options go here
+                        options:  {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                xAxes: [{
+                                    afterTickToLabelConversion: function(data){
+                                        
+                                        
+                                        var xLabels = data.ticks;
+                                            
+                                        xLabels.forEach(function (labels, i) {
+                                            if (i % 6 != 0){
+                                                xLabels[i] = '';
+                                            }
+                                        });
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Date (YYYY/MM/DD)'
+                                    }
+                                    
+                                }],
+                                yAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Performance since '+String(arr_l[0])+' (%)'
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                });
+                //document.getElementById("demo-B").innerHTML = String(arrB.length);
+                
+                //document.getElementById("demo-B").innerHTML = String(arr_A.length);
+                
+                //document.getElementById("demo-B").innerHTML = String(arr_A.length);
+                // See: https://stackoverflow.com/questions/31131275/create-a-multi-line-chart-using-chart-js
+                
+                
+            }
+            
+        </script>
 
 	</body>
 </html>
