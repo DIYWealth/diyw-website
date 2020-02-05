@@ -1587,7 +1587,7 @@
 	body, input, select, textarea {
 		color: #595959;
 		font-family: "Raleway", Arial, Helvetica, sans-serif;
-		font-size: 13pt;
+		font-size: 1.1em;
 		font-weight: 300;
 		line-height: 1.65;
 	}
@@ -1595,7 +1595,7 @@
 		@media screen and (max-width: 1680px) {
 
 			body, input, select, textarea {
-				font-size: 12pt;
+				font-size: 1.1em;
 			}
 
 		}
@@ -1603,7 +1603,7 @@
 		@media screen and (max-width: 1280px) {
 
 			body, input, select, textarea {
-				font-size: 12pt;
+				font-size: 1.1em;
 			}
 
 		}
@@ -1611,7 +1611,7 @@
 		@media screen and (max-width: 980px) {
 
 			body, input, select, textarea {
-				font-size: 12pt;
+				font-size: 1.1em;
 			}
 
 		}
@@ -1619,7 +1619,7 @@
 		@media screen and (max-width: 736px) {
 
 			body, input, select, textarea {
-				font-size: 12pt;
+				font-size: 1.1em;
 			}
 
 		}
@@ -1627,7 +1627,7 @@
 		@media screen and (max-width: 480px) {
 
 			body, input, select, textarea {
-				font-size: 12pt;
+				font-size: 1.1em;
 			}
 
 		}
@@ -3032,8 +3032,8 @@
 
 		#banner p {
 			font-size: 1.5em;
-            font-weight: 800;
-			color: rgba(255, 255, 255, 0.75);
+            font-weight: 500;
+			color: rgba(255, 255, 255, 0.85);
 			margin-bottom: 1.75em;
 		}
 
