@@ -35,6 +35,19 @@
 				<p>A free resource for the amateur investor</p>
 			</section>
 
+		<!-- Returns -->
+			<section id="two" class="wrapper style1 special">
+				<div class="inner">
+                    <article>
+					<header>
+						<h3>Latest Portfolio Returns</h2>
+                        <p>Percentage return since inception (2018/06/29)</p>
+					</header>
+                    </article>
+                    <div class="table-wrapper" id="returnsTable"></div>
+				</div>
+			</section>
+
 		<!-- One -->
 			<section id="one" class="wrapper">
 				<div class="inner">
@@ -196,6 +209,84 @@
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+            <!-- Latest Returns -->
+            <script>
+                //first add an event listener for page load
+                document.addEventListener( "DOMContentLoaded", get_latest_returns, false ); // get_json_data is the function name that will fire on page load
+
+                //this function is in the event listener and will execute on page load
+                function get_latest_returns(){
+                    // Relative URL of external json file
+                    var json_url = 'data/performance.json';
+
+                    //Build the XMLHttpRequest (aka AJAX Request)
+                    xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {//when a good response is given do this
+
+                            var data = JSON.parse(this.responseText); // convert the response to a json object
+                            append_returns(data);// pass the json object to the append_json function
+
+                        }
+                    }
+                    //set the request destination and type
+                    xmlhttp.open("POST", json_url, true);
+                    //set required headers for the request
+                    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    // send the request
+                    xmlhttp.send(); // when the request completes it will execute the code in onreadystatechange section
+                }
+
+                //this function appends the json data to the table 'gable'
+                function append_returns(data){
+
+                    var table = document.createElement('table');
+                    table.setAttribute('class', 'alt2');
+                    var thead = document.createElement('thead');
+                    var tr = document.createElement('tr');
+                    tr.innerHTML = '<th></th>' +
+                        '<th colspan="6">' + "Minimum market capitalisation" + '</th>' +
+                        '<th>' + "Benchmark" + '</th>';
+                    thead.appendChild(tr);
+                    var tr2 = document.createElement('tr');
+                    tr2.innerHTML = '<th>' + "Number of stocks held" + '</th>' +
+                        '<th>' + "$100M" + '</th>' +
+                        '<th>' + "$500M" + '</th>' +
+                        '<th>' + "$1B" + '</th>' +
+                        '<th>' + "$5B" + '</th>' +
+                        '<th>' + "$10B" + '</th>' +
+                        '<th>' + "$50B" + '</th>' +
+                        '<th>' + "S&amp;P500" + '</th>';
+                    thead.appendChild(tr2);
+                    table.appendChild(thead);
+                    var tbody = document.createElement('tbody');
+
+                    var tr = document.createElement('tr');
+                    tr.innerHTML = '<td>' + "30" + '</td>' +
+                    '<td>' + data[data.length-1].stocks30mcap100M.toFixed(1) + '</td>' +
+                    '<td>' + data[data.length-1].stocks30mcap500M.toFixed(1) + '</td>' +
+                    '<td>' + data[data.length-1].stocks30mcap1B.toFixed(1) + '</td>' +
+                    '<td>' + data[data.length-1].stocks30mcap5B.toFixed(1) + '</td>' +
+                    '<td>' + data[data.length-1].stocks30mcap10B.toFixed(1) + '</td>' +
+                    '<td>' + data[data.length-1].stocks30mcap50B.toFixed(1) + '</td>' +
+                    '<td>' + data[data.length-1].SPY.toFixed(1) + '</td>';
+                    tbody.appendChild(tr);
+                    var tr2 = document.createElement('tr');
+                    tr2.innerHTML = '<td>' + "50" + '</td>' +
+                    '<td>' + data[data.length-1].stocks50mcap100M.toFixed(1) + '</td>' +
+                    '<td>' + data[data.length-1].stocks50mcap500M.toFixed(1) + '</td>' +
+                    '<td>' + data[data.length-1].stocks50mcap1B.toFixed(1) + '</td>' +
+                    '<td>' + data[data.length-1].stocks50mcap5B.toFixed(1) + '</td>' +
+                    '<td>' + data[data.length-1].stocks50mcap10B.toFixed(1) + '</td>' +
+                    '<td>' + data[data.length-1].stocks50mcap50B.toFixed(1) + '</td>' +
+                    '<td></td>';
+                    tbody.appendChild(tr2);
+                    
+                    table.appendChild(tbody);
+                    document.getElementById('returnsTable').innerHTML = "";
+                    document.getElementById('returnsTable').appendChild(table);
+                }
+            </script>
 
 	</body>
 </html>
