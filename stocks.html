@@ -35,16 +35,16 @@
 						<h2>Stock Selector</h2>
 					</header>
                     <p>Here is a list of stocks selected by the DIYWealth algorithm. We select stocks with sufficient market capitalisation according to the risk appetite of our virtual portfolios.</p>
-                    <p><strong>Disclaimer: DIYWealth (doityourwealth.com) is not an investment adviser, brokerage firm, or investment company. The strategy demonstrated here and the stocks it selects have no guarantee of investment success. If you buy any of the stocks listed it is at your own risk.</strong></p>
-                    <p>Note: The data may note be completely up to date. We try to obtain company balance sheets, used for calculating the return on equity, no later than a month after the most recent quarterly reporting. The PE ratio and market capitalisation should be updated daily. The dates of the latest data are given below.</p>
+                    <p><strong>Disclaimer: DIYWealth (doityourwealth.com) is not an investment adviser, brokerage firm, or investment company. We are not certified or qualified to provide investment advice, and no content on this website should be construed as investment advice or an offer or solicitation to buy or sell stock. Data on this website has been provided by the IEX Cloud API, with subsequent processing performed by DIYWealth. We make no guarantees that it is accurate and reliable, and take no legal responsibility to provide future updates. The strategy presented here is for demonstration purposes only, and the stocks it selects have no guarantee of investment success. We accept no responsibility, or assume any liability, whatsoever, for any direct, indirect, or consequential loss arising from the use of any content on this website.</strong></p>
+                    <p>Note: The data may not be completely up to date. We try to obtain company balance sheets, used for calculating the return on equity, no later than a month after the most recent quarterly reporting. The P/E ratio and market capitalisation should be updated daily. The dates of the latest data are given below.</p>
 
                     <div id="latestDates">
                     </div>
 
 					<!-- Form -->
-					<h3>Minimum market capitalisation ($1M)</h3>
+					<h3>Minimum market capitalisation ($M)</h3>
                     <ul class="actions">
-                        <li><input type="number" name="mcap" id="mcap" value="0" min="0" placeholder="Minimum market capitalisation ($1M)" /></li>
+                        <li><input type="number" name="mcap" id="mcap" value="0" min="0" placeholder="Minimum market capitalisation ($M)" /></li>
                         <li><input type="submit" onclick="get_json_data();" value="Get Stocks" /></li>
                     </ul>
                     <div class="table-wrapper" id="stockTable"></div>
@@ -112,8 +112,8 @@
                     var tr = document.createElement('tr');
                     tr.innerHTML = '<th>' + "Symbol" + '</th>' +
                         '<th>' + "Name" + '</th>' +
-                        '<th>' + "MCap ($1M)" + '</th>' +
-                        '<th>' + "PE Ratio" + '</th>' +
+                        '<th>' + "MCap ($M)" + '</th>' +
+                        '<th>' + "P/E Ratio" + '</th>' +
                         '<th>' + "Return On Equity" + '</th>' +
                         '<th>' + "Report Date" + '</th>';
                     thead.appendChild(tr);
@@ -172,7 +172,7 @@
                 //this function appends the json data to the table 'gable'
                 function append_dates(data){
 
-                    var line1 = "<h3>Date of latest PE and MCap data:</h3>"
+                    var line1 = "<h3>Date of latest P/E and MCap data:</h3>"
                     var line2a = "<p><strong>"
                     var line2b = "</p></strong>"
 
